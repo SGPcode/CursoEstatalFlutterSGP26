@@ -14,7 +14,7 @@ class MiTienda extends StatelessWidget {
           backgroundColor:Colors.blue ,
           leading: Icon(Icons.add_a_photo),
           leadingWidth: 100,
-          title: Text('Mi tienda Sergio 114'), 
+          title: Text('Mi tienda Sergio # 114'), 
           centerTitle: true
           ),
         
