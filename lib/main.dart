@@ -1,18 +1,25 @@
+
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    
-    MaterialApp(
-    debugShowCheckedModeBanner: false,
+void main() => runApp(MiTienda());
+class MiTienda extends StatelessWidget {
+  const MiTienda({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Sergio CBTis 114 '),
-            centerTitle: true,
+        appBar: AppBar(
+
+          backgroundColor:Colors.blue ,
+          leading: Icon(Icons.add_a_photo),
+          leadingWidth: 100,
+          title: Text('Mi tienda Sergio 114'), 
+          centerTitle: true
           ),
-          body: Center(
-            child: Text( "Bienvenido a mi App Sergio",
-            )    
-          ),
-      )));
-} //fin de main  Shift + Alt + F Ordena líneas de código
+        
+        body: Center(child: Text('Lista de Productos Disponibles')),
+      ),
+    );
+  }
+}
