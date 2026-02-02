@@ -10,7 +10,7 @@ class AppViajes extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // TEMA Y COLOR
+      // TEMA Y COLORs 
       theme: ThemeData(
         primarySwatch: Colors.indigo,
         scaffoldBackgroundColor: Colors.grey[200],
