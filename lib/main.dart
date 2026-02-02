@@ -1,25 +1,62 @@
-
 import 'package:flutter/material.dart';
 
-void main() => runApp(AppViajes());
+void main() => runApp(AppSocial());
 
-class AppViajes extends StatelessWidget {
-  const AppViajes({super.key});
+class AppSocial extends StatelessWidget {
+  const AppSocial({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // TEMA Y COLOR
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        scaffoldBackgroundColor: Colors.grey[200],
-      ),
-      home: PantallaInicio(),
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      // DEFINICIÓN DE RUTAS
+      initialRoute: '/',
+      routes: {
+        '/': (BuildContext context) => const PantallaInicio(),
+        '/perfil': (BuildContext context) => const PantallaPerfil(),
+      },
     );
   }
-}// fin clase AppViajes
+}// fin clase AppSocial con herencia
 
+// --- WIDGET PERSONALIZADO PARA EL DRAWER (Para no repetir código) ---
+class MiDrawer extends StatelessWidget {
+  const MiDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          // ENCABEZADO CON AVATAR Y DESCRIPCIÓN
+          const UserAccountsDrawerHeader(
+            accountName: Text("Sergio González Cbtis 114"), // <-- Aqui tu nombre y Cbtis
+            accountEmail: Text("sergio.gonzalez@cbtis114.edu.mx"), // <-- Aqui tu correo
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: NetworkImage("https://i.postimg.cc/WpnRG7xD/SGP.png"),
+            ),
+          ),
+          // OPCIÓN 1
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text("Inicio Cbtis 128"), // aqui Indica Tu Numero Cbtis
+            onTap: () => Navigator.pushNamed(context, '/'),
+          ),
+          // OPCIÓN 2
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text("Mi Perfil de Eliseo 128 "),// aqui modifica tu nombre
+            onTap: () => Navigator.pushNamed(context, '/perfil'),
+          ),
+        ],
+      ),
+    );
+  }
+}// fin clase AppSocial con herencia
+
+// --- PANTALLAS ---
 class PantallaInicio extends StatelessWidget {
   const PantallaInicio({super.key});
 
@@ -27,67 +64,27 @@ class PantallaInicio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Destinos Turísticos Sergio González Pérez Cbtis 114"),
-        backgroundColor: Colors.blue,
-        ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        // COLUMNA PRINCIPAL
-        child: Column(
-          children: [
-            // FILA 1
-            Row(
-              children: [
-                Expanded(child: TarjetaLugar(
-                  titulo: "Tenochtitlan, México,Sergio González Pérez Cbtis 114",
-                  desc: "Lugar donde abundan los nopales sobre piedra",
-                  url: "https://i.postimg.cc/SRcrkV8W/Tenochtitlan.jpg",
-                )),
-              ],
-            ),
-            // FILA 2
-            Row(
-              children: [
-                Expanded(child: TarjetaLugar(
-                  titulo: "Chichén Itzá, México Sergio González Pérez Cbtis 114",
-                  desc: "La ciudad al borde del pozo de los Itzáes",
-                  url: "https://i.postimg.cc/Y9q8NQJX/Chichen-Itza.jpg",
-                )),
-              ],
-            ),
-           
-
-          ],
-        ),
+        title: const Text("Inicio Eliseo 128"),
+        backgroundColor: Colors.amberAccent,
       ),
+      drawer: const MiDrawer(), // Agregamos el Drawer aquí
+      body: const Center(child: Text("Bienvenido a la App Social del Cbtis 128")),
     );
   }
-}// fin de la clase PantallaInicio
+}// fin clase PantallaInicio
 
-class TarjetaLugar extends StatelessWidget {
-  final String titulo, desc, url;
-  const TarjetaLugar({super.key, required this.titulo, required this.desc, required this.url});
+class PantallaPerfil extends StatelessWidget {
+  const PantallaPerfil({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row( // Row dentro de la card para poner imagen a la izquierda
-          children: [
-            Image.network(url, width: 80, height: 80, fit: BoxFit.cover),
-            SizedBox(width: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(titulo, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                Text(desc),
-              ],
-            )
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Perfil"),
+        backgroundColor: Colors.pinkAccent,
       ),
+      drawer: const MiDrawer(), // Agregamos el Drawer aquí también
+      body: const Center(child: Text("Información del Usuario Eliseo 128")),
     );
   }
-}// fin de la clase TarjetaLugar
+}// fin clase PantallaPerfil
