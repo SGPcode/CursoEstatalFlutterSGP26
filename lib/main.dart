@@ -55,15 +55,7 @@ class PantallaInicio extends StatelessWidget {
                 )),
               ],
             ),
-            Row(
-              children: [
-                Expanded(child: TarjetaLugar(
-                  titulo: "Paquimé, Chihuahua, México Sergio González Pérez Cbtis 114",
-                  desc: "El lugar de las casas grandes",
-                  url: "https://i.postimg.cc/zX0hW9J3/Paquime.jpg",
-                )),
-              ],
-            ),
+           
 
           ],
         ),
