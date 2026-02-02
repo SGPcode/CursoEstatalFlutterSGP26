@@ -18,7 +18,7 @@ class AppSocial extends StatelessWidget {
       },
     );
   }
-}// fin clase AppSocial con herencia
+}// fin clase AppSocial con herencias
 
 // --- WIDGET PERSONALIZADO PARA EL DRAWER (Para no repetir código) ---
 class MiDrawer extends StatelessWidget {
