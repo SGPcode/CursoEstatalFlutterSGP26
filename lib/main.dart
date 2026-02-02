@@ -9,7 +9,7 @@ class AppSocial extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.indigo),
+      theme: ThemeData(primarySwatch: Colors.yellow),
       // DEFINICIÓN DE RUTAS
       initialRoute: '/',
       routes: {
@@ -41,13 +41,13 @@ class MiDrawer extends StatelessWidget {
           // OPCIÓN 1
           ListTile(
             leading: const Icon(Icons.home),
-            title: const Text("Inicio Cbtis 128"), // aqui Indica Tu Numero Cbtis
+            title: const Text("Inicio Bienvenido Sergio Cbtis 114"), // aqui Indica Tu Numero Cbtis
             onTap: () => Navigator.pushNamed(context, '/'),
           ),
           // OPCIÓN 2
           ListTile(
             leading: const Icon(Icons.person),
-            title: const Text("Mi Perfil de Eliseo 128 "),// aqui modifica tu nombre
+            title: const Text("Mi Perfil de Sergio González Pérez 114 "),// aqui modifica tu nombre
             onTap: () => Navigator.pushNamed(context, '/perfil'),
           ),
         ],
@@ -64,11 +64,11 @@ class PantallaInicio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Inicio Eliseo 128"),
-        backgroundColor: Colors.amberAccent,
+        title: const Text("Inicio Sergio González Pérez Cbtis 114"),
+        backgroundColor: Colors.blueAccent,
       ),
       drawer: const MiDrawer(), // Agregamos el Drawer aquí
-      body: const Center(child: Text("Bienvenido a la App Social del Cbtis 128")),
+      body: const Center(child: Text("Bienvenido a la App Social Lobos del Cbtis 114")),
     );
   }
 }// fin clase PantallaInicio
@@ -81,10 +81,10 @@ class PantallaPerfil extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Perfil"),
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.deepOrangeAccent,
       ),
       drawer: const MiDrawer(), // Agregamos el Drawer aquí también
-      body: const Center(child: Text("Información del Usuario Eliseo 128")),
+      body: const Center(child: Text("Información del Usuario Sergio 114")),
     );
   }
 }// fin clase PantallaPerfil
