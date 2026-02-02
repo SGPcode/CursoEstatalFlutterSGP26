@@ -1,90 +1,68 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(AppSocial());
+void main() {
+  runApp(const MiApp());
+}
 
-class AppSocial extends StatelessWidget {
-  const AppSocial({super.key});
+class MiApp extends StatelessWidget {
+  const MiApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.yellow),
-      // DEFINICIÓN DE RUTAS
-      initialRoute: '/',
-      routes: {
-        '/': (BuildContext context) => const PantallaInicio(),
-        '/perfil': (BuildContext context) => const PantallaPerfil(),
-      },
+      
+      home: PerfilScreen(),
     );
   }
-}// fin clase AppSocial con herencias
+}// fin clase MiApp
 
-// --- WIDGET PERSONALIZADO PARA EL DRAWER (Para no repetir código) ---
-class MiDrawer extends StatelessWidget {
-  const MiDrawer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          // ENCABEZADO CON AVATAR Y DESCRIPCIÓN
-          const UserAccountsDrawerHeader(
-            accountName: Text("Sergio González Cbtis 114"), // <-- Aqui tu nombre y Cbtis
-            accountEmail: Text("sergio.gonzalez@cbtis114.edu.mx"), // <-- Aqui tu correo
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage("https://i.postimg.cc/WpnRG7xD/SGP.png"),
-            ),
-          ),
-          // OPCIÓN 1
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text("Inicio Bienvenido Sergio Cbtis 114"), // aqui Indica Tu Numero Cbtis
-            onTap: () => Navigator.pushNamed(context, '/'),
-          ),
-          // OPCIÓN 2
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text("Mi Perfil de Sergio González Pérez 114 "),// aqui modifica tu nombre
-            onTap: () => Navigator.pushNamed(context, '/perfil'),
-          ),
-        ],
-      ),
-    );
-  }
-}// fin clase AppSocial con herencia
-
-// --- PANTALLAS ---
-class PantallaInicio extends StatelessWidget {
-  const PantallaInicio({super.key});
+class PerfilScreen extends StatelessWidget {
+  const PerfilScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlue,
       appBar: AppBar(
-        title: const Text("Inicio Sergio González Pérez Cbtis 114"),
-        backgroundColor: Colors.blueAccent,
+        title: const Text('Perfil de Usuario Sergio González Pérez Cbtis 114'),
+        
+        backgroundColor: Colors.orange,
       ),
-      drawer: const MiDrawer(), // Agregamos el Drawer aquí
-      body: const Center(child: Text("Bienvenido a la App Social Lobos del Cbtis 114")),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.amber,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              const CircleAvatar(
+                radius: 40,
+                backgroundImage: NetworkImage(
+                  'https://i.postimg.cc/WpnRG7xD/SGP.png',
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text('Sergio González Cbtis 114',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text('Sergio González Pérez es Desarrollador Flutter del Cbtis 114'),
+                    Text('sergio.gonzalez@cbtis114.edu.mx'),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
-}// fin clase PantallaInicio
-
-class PantallaPerfil extends StatelessWidget {
-  const PantallaPerfil({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Perfil"),
-        backgroundColor: Colors.deepOrangeAccent,
-      ),
-      drawer: const MiDrawer(), // Agregamos el Drawer aquí también
-      body: const Center(child: Text("Información del Usuario Sergio 114")),
-    );
-  }
-}// fin clase PantallaPerfil
+}// fin clase PerfilScreen
